@@ -5,17 +5,20 @@ Schedule.Inject(Day, Month);
 
 let msPerDay: number = 86400000;
 let msPerHour: number = 3600000;
+let msPerMinue: number = 3600000/60;
 let currentTime: number = new Date().setHours(0, 0, 0, 0);
 let data: Array<object> = [];
 
-for(var i=1 ; i< 100000 ;i++){
+for(var d=1 ; d< 1000 ;d++){ 
+    for(var m=1 ; m< 24*60 ;m++){ 
     data.push({
-        Id: i,
-        Subject: 'Name ' + i,
-        StartTime: new Date(currentTime + msPerDay * -(i / 24) + msPerHour * (i % 24)),
-        EndTime: new Date(currentTime + msPerDay * -(i / 24)+ msPerHour * (i % 24)),
+        Id: d*m,
+        Subject: 'Name ' + d*m,
+        StartTime: new Date(currentTime + msPerDay * -(d ) + msPerMinue * (m  )),
+        EndTime: new Date(currentTime + msPerDay * -(d )+ msPerMinue * (m )),
         CategoryColor: '#98AFC7'   
     });
+    }
 }
 
 let scheduleObj: Schedule = new Schedule({
