@@ -3,22 +3,20 @@ import { applyCategoryColor } from './datasource';
 
 Schedule.Inject(Day, Month);
 
-let msPerDay: number = 86400000;
 let msPerHour: number = 3600000;
-let msPerMinue: number = 3600000/60;
 let currentTime: number = new Date().setHours(0, 0, 0, 0);
 let data: Array<object> = [];
 
-for(var d=1 ; d< 1000 ;d++){ 
-    for(var m=1 ; m< 24*60 ;m++){ 
+for(var i=1 ; i< 100 ;i++){ 
+
     data.push({
-        Id: d*m,
-        Subject: 'Name ' + d*m,
-        StartTime: new Date(currentTime + msPerDay * -(d ) + msPerMinue * (m  )),
-        EndTime: new Date(currentTime + msPerDay * -(d )+ msPerMinue * (m )),
+        Id: i,
+        Subject: 'Name ' + i,
+        StartTime: new Date(currentTime + msPerHour * i),
+        EndTime: new Date(currentTime +   msPerHour * i + 1),
         CategoryColor: '#98AFC7'   
     });
-    }
+    
 }
 
 let scheduleObj: Schedule = new Schedule({
